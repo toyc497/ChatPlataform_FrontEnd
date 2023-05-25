@@ -1,0 +1,33 @@
+:root{
+    --backgroundColor: #001E40;
+    --fontColor: #ffffff;
+    --btnColor: #F26531;
+    --inputHover: #dbdbdb;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+    background-color: var(--backgroundColor);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+}
+  
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: var(--btnColor);
+    border-radius: 20px;
+    border: 0;
+}

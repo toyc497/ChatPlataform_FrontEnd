@@ -1,0 +1,98 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .wordContainer{
+    width: 100vw;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fontColor);
+    font-family: 'Roboto', sans-serif;
+}
+
+.container .wordContainer ul li{
+    display: inline-block;
+    padding-left: 30px;
+}
+
+.container .wordContainer ul li #palavraChaveTxt{
+    border: 0;
+    padding: 5px 0 5px 5px;
+    border-radius: 5px;
+}
+
+.container .wordContainer ul li #palavraChaveTxt:hover{
+    background-color: var(--inputHover);
+}
+
+.container .wordContainer ul li #colors{
+    border: 0;
+    padding: 5px 0 5px 5px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container .wordContainer ul li #colors:hover{
+    background-color: var(--inputHover);
+}
+
+.container .wordContainer ul li #btnAdd{
+    padding: 5px 7px;
+    font-family: 'Roboto', sans-serif;
+    border: 0;
+    border-radius: 5px;
+}
+
+.container .wordContainer ul li #btnAdd:hover{
+    background-color: var(--btnColor);
+    cursor: pointer;
+}
+
+.container .wordContainer ul li:first-child{
+    padding-left: 0;
+}
+
+/* palavrasChaveContainer */
+.container .palavrasChaveContainer{
+    width: 100vw;
+    height: 70%;
+}
+
+.container .palavrasChaveContainer{
+    font-family: 'Roboto', sans-serif;
+    color: var(--fontColor);
+}
+
+.container .palavrasChaveContainer ul{
+    display: inline-block;
+    padding: 10px;
+}
+
+.container .palavrasChaveContainer ul li{
+    padding: 10px;
+    border-color: var(--btnColor);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+#btnDeleteKeyword{
+    padding: 5px 5px 5px 8px;
+    border: 0;
+    background-color: transparent;
+    color: var(--btnColor);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+#btnDeleteKeyword:hover{
+    color: rgb(255, 4, 4);
+    cursor: pointer;
+}

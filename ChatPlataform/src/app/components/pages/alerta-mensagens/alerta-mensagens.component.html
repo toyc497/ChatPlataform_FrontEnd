@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="wordContainer">
+        <form>
+            <ul>
+                <li>
+                    <label for="palavraChaveTxt">Palavra-chave: </label>
+                    <input type="text" [(ngModel)]="palavraChaveTxt" name="palavraChaveTxt" id="palavraChaveTxt" placeholder="Palavra-chave" required>
+                </li>
+                <li>
+                    <label for="colors">Cor/Grupo: </label>
+                    <select name="colors" id="colors" [(ngModel)]="corId">
+                        <option *ngFor="let cor of coresList" value="{{cor.id}}">{{cor.nome}}</option>
+                    </select>
+                </li>
+                <li>
+                    <button id="btnAdd" (click)="addBtnClick()">Adicionar</button>
+                </li>
+            </ul> 
+        </form>
+    </div>
+    <div class="palavrasChaveContainer">
+        <ul *ngFor="let palavraChave of palavraChaveList">
+            <li class="keyWords">{{palavraChave.palavra}} <button id="btnDeleteKeyword" (click)="deleteKeyword(palavraChave)">X</button></li>
+        </ul>
+    </div>
+</div>
