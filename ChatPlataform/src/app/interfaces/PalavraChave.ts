@@ -1,6 +1,10 @@
+import { Cor } from "./Cor";
+
 export interface palavraChave{
 
-    palavra: String;
-    cor_id: number;
+    id: Number;
+    palavra: string;
+    beepName: string;
+    colorGroup: Cor;
 
 }
