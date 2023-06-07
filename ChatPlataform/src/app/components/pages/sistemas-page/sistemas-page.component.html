@@ -1,11 +1,18 @@
 <div class="container">
-    <table>
-        <td>ID</td>
-        <td>Sistema</td>
-
-        <tr *ngFor="let sistema of sistemasChat">
-            <td>{{sistema.id}}</td>
-            <td>{{sistema.nome}}</td>
-        </tr>
-    </table>
+    <div class="sistemaContainer" *ngFor="let sistema of sistemasChat">
+        <div class="nomeSistema item-sistema">{{sistema.nome}}</div>
+        <div class="btnContainer">
+            <ul>
+                <li>
+                    <button class="btnAcessContainer item-sistema" routerLink="/edital">Pregões</button>
+                </li>
+                <li>
+                    <button class="btnCredencialContainer item-sistema" routerLink="/contaUsuario">Credencial</button>
+                </li>
+                <li>
+                    <button class="btnDeleteContainer item-sistema" (click)="deleteSistemaAction(sistema)">Deletar</button>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

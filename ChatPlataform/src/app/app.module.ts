@@ -5,18 +5,24 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InicialComponent } from './components/inicial/inicial.component';
 import { HeaderComponent } from './components/pages/header/header.component';
 import { AlertaMensagensComponent } from './components/pages/alerta-mensagens/alerta-mensagens.component';
 import { SistemasPageComponent } from './components/pages/sistemas-page/sistemas-page.component';
+import { CoresPageComponent } from './components/pages/cores-page/cores-page.component';
+import { ContaUsuarioComponent } from './components/pages/conta-usuario/conta-usuario.component';
+import { EditalPageComponent } from './components/pages/edital-page/edital-page.component';
+import { ChatPageComponent } from './components/pages/chat-page/chat-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicialComponent,
     HeaderComponent,
     AlertaMensagensComponent,
-    SistemasPageComponent
+    SistemasPageComponent,
+    CoresPageComponent,
+    ContaUsuarioComponent,
+    EditalPageComponent,
+    ChatPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="tabelaContainer">
+        <table>
+            <tr>
+                <th>Origem</th>
+                <th>Data</th>
+                <th>Mensagem</th>
+            </tr>
+            <tr *ngFor="let mensagem of listMensagens">
+                <td>{{mensagem.origem}}</td>
+                <td>{{mensagem.dataHora}}</td>
+                <td>{{mensagem.conteudo}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

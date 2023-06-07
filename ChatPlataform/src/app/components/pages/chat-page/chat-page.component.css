@@ -1,0 +1,50 @@
+.container{
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container .tabelaContainer{
+    width: 90%;
+    height: 100%;
+}
+
+table{
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 30px;
+}
+
+table, th td{
+    border: 1px var(--btnColor);
+}
+
+th, td{
+    padding: 10px;
+    text-align: center;
+    width: auto;
+}
+
+th{
+    text-align: justify;
+    color: var(--fontColor);
+    background-color: var(--btnColor);
+    font-weight: bold;
+}
+
+td{
+    font-size: 0.9rem;
+    text-align: justify;
+    color: var(--fontColor);
+}
+
+tr:nth-child(even) {
+    background-color: var(--backgroundHoverColor);
+    }
+
+tr:hover:nth-child(1n + 2) {
+    background-color: var(--btnHoverColor);
+    color: var(--fontColor);
+}

@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="tabelaContainer">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Chave do Edital</th>
+                <th>Número do Pregão</th>
+                <th>Lote</th>
+            </tr>
+            <tr *ngFor="let pregao of listPregoes">
+                <td>{{pregao.id}}</td>
+                <td>{{pregao.chaveEdital}}</td>
+                <a routerLink="/chat"><td>{{pregao.numeroPregao}}</td></a>
+                <td>{{pregao.lote}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

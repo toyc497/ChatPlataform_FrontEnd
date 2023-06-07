@@ -1,8 +1,13 @@
 :root{
     --backgroundColor: #001E40;
+    --backgroundHoverColor: #02162c;
     --fontColor: #ffffff;
     --btnColor: #F26531;
+    --btnHoverColor: #e98662;
     --inputHover: #dbdbdb;
+    --btn1: #1E90FF;
+    --btn2: #FF6347;
+    --btn3: #3CB371;
 }
 
 *{

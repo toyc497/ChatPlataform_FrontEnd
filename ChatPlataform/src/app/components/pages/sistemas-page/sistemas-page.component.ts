@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
-import { Sistemas } from 'src/app/interfaces/sistemas';
+import { Sistemas } from 'src/app/interfaces/Sistemas';
+import { SistemaService } from 'src/app/services/SistemaService';
 
 @Component({
   selector: 'app-sistemas-page',
@@ -9,10 +9,24 @@ import { Sistemas } from 'src/app/interfaces/sistemas';
 })
 export class SistemasPageComponent {
 
-  sistemasChat: Sistemas[] = [
-    {id: 1, nome: "BBMNET"},
-    {id: 2, nome: "PNCP"},
-    {id: 3, nome: "BRASILNET"}
-  ];
+  sistemasChat: Sistemas[] = [];
+
+  constructor(private sistemaService: SistemaService){}
+
+  ngOnInit(): void{
+
+    this.sistemaService.getAllSistemas().subscribe(
+      (sistema) => (this.sistemasChat = sistema)
+    );
+
+  }
+
+  deleteSistemaAction(sistema: Sistemas): void{
+    const idDelete = sistema.id;
+    this.sistemaService.deleteSistema(idDelete).subscribe();
+
+    let indexSistemaChat = this.sistemasChat.indexOf(sistema);
+    this.sistemasChat.splice(indexSistemaChat,1);
+  }
 
 }
