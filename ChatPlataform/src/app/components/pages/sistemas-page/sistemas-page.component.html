@@ -4,10 +4,10 @@
         <div class="btnContainer">
             <ul>
                 <li>
-                    <button class="btnAcessContainer item-sistema" routerLink="/edital">Pregões</button>
+                    <button class="btnAcessContainer item-sistema" (click)="pregoesSystem(sistema)">Pregões</button>
                 </li>
                 <li>
-                    <button class="btnCredencialContainer item-sistema" routerLink="/contaUsuario">Credencial</button>
+                    <button class="btnCredencialContainer item-sistema" (click)="credenciaisSystem(sistema)">Credencial</button>
                 </li>
                 <li>
                     <button class="btnDeleteContainer item-sistema" (click)="deleteSistemaAction(sistema)">Deletar</button>

@@ -7,15 +7,18 @@ import { ContaUsuarioComponent } from './components/pages/conta-usuario/conta-us
 import { EditalPageComponent } from './components/pages/edital-page/edital-page.component';
 import { ChatPageComponent } from './components/pages/chat-page/chat-page.component';
 import { SistemasPageComponent } from './components/pages/sistemas-page/sistemas-page.component';
+import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path: '', component: SistemasPageComponent},
+  {path: '', redirectTo: '/sistema', pathMatch: 'full'},
+  {path: 'sistema', component: SistemasPageComponent},
   {path: 'header', component: HeaderComponent},
   {path: 'alertaMensagens', component: AlertaMensagensComponent},
   {path: 'cores', component: CoresPageComponent},
   {path: 'contaUsuario', component: ContaUsuarioComponent},
   {path: 'edital', component: EditalPageComponent},
-  {path: 'chat', component: ChatPageComponent}
+  {path: 'chat', component: ChatPageComponent},
+  {path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({

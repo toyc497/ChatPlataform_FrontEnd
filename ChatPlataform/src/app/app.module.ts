@@ -12,6 +12,7 @@ import { CoresPageComponent } from './components/pages/cores-page/cores-page.com
 import { ContaUsuarioComponent } from './components/pages/conta-usuario/conta-usuario.component';
 import { EditalPageComponent } from './components/pages/edital-page/edital-page.component';
 import { ChatPageComponent } from './components/pages/chat-page/chat-page.component';
+import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ChatPageComponent } from './components/pages/chat-page/chat-page.compon
     CoresPageComponent,
     ContaUsuarioComponent,
     EditalPageComponent,
-    ChatPageComponent
+    ChatPageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

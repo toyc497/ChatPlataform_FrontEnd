@@ -1,3 +1,5 @@
+import { Sistemas } from "./Sistemas";
+
 export interface Pregao{
 
     id: number;

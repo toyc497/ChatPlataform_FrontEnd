@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Credencial } from 'src/app/interfaces/Credencial';
+import { Sistemas } from 'src/app/interfaces/Sistemas';
+import { CredencialService } from 'src/app/services/CredencialService';
+import { DataService } from 'src/app/services/DataService';
 
 @Component({
   selector: 'app-conta-usuario',
@@ -8,14 +11,29 @@ import { Credencial } from 'src/app/interfaces/Credencial';
 })
 export class ContaUsuarioComponent {
 
-  credencialSystem: Credencial = {
-    id: 1,
-    usuario: 'microtecnica',
-    senha: 'micro2023',
-    sistema: 1
-  }; 
+  credencialAtual: Credencial[] = [];
+
+  testeReturn: string = '';
+
+  sistemaAtual!: number;
+  
+
+  constructor(private credencialService: CredencialService, private dataService: DataService){}
 
   ngOnInit(): void{
+
+    this.sistemaAtual = this.dataService.getIdSistema();
+    console.log("SISTEMA ATUAL: "+this.sistemaAtual);
+
+    this.credencialService.findCrendencialByIdSistema(this.sistemaAtual).subscribe(
+      //(credencialDB) => console.log(credencialDB)
+      (credencialBD) => (this.testeReturn = credencialBD)
+      //(credencialBD) => (this.testeReturn = credencialBD)
+    );
+
+    
+
+    console.log("CREDENCIAL ATUAL: "+this.testeReturn);
 
   }
 
