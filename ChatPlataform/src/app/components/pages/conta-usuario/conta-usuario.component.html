@@ -1,7 +1,7 @@
 <div class="container">
     <div class="credenciaisContainer">
-        <input type="text" class="usuario inputElement" id="usuario" placeholder="">
-        <input type="text" class="usuario inputElement" id="usuario" placeholder="">
-        <button class="btnAtualizar inputElement">Atualizar</button>
+        <input type="text" class="usuario inputElement" id="usuario" [(ngModel)]="usuarioSistema" placeholder="Usuário">
+        <input type="password" class="usuario inputElement" id="senha" [(ngModel)]="senhaSistema" placeholder="Senha">
+        <button class="btnAtualizar inputElement" (click)="putCredendiaisSistema()">Atualizar</button>
     </div>
 </div>

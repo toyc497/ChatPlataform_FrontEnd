@@ -13,10 +13,10 @@ const routes: Routes = [
   {path: '', redirectTo: '/sistema', pathMatch: 'full'},
   {path: 'sistema', component: SistemasPageComponent},
   {path: 'header', component: HeaderComponent},
-  {path: 'alertaMensagens', component: AlertaMensagensComponent},
+  {path: 'alertas', component: AlertaMensagensComponent},
   {path: 'cores', component: CoresPageComponent},
-  {path: 'contaUsuario', component: ContaUsuarioComponent},
-  {path: 'edital', component: EditalPageComponent},
+  {path: 'credenciais', component: ContaUsuarioComponent},
+  {path: 'pregao', component: EditalPageComponent},
   {path: 'chat', component: ChatPageComponent},
   {path: '**', component: PageNotFoundComponent},
 ];

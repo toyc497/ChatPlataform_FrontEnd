@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Mensagem } from 'src/app/interfaces/Mensagem';
+import { DataService } from 'src/app/services/DataService';
+import { ChatService } from 'src/app/services/chat.service';
+import { WebsocketchatconnectService } from 'src/app/services/websocketchatconnect.service';
 
 @Component({
   selector: 'app-chat-page',
@@ -8,18 +12,28 @@ import { Mensagem } from 'src/app/interfaces/Mensagem';
 })
 export class ChatPageComponent {
 
-  listMensagens: Mensagem[] = [
-    {id: 0, origem: 'Pregoeiro', dataHora: '31/05/2023 11:39:41', conteudo: 'O pregão está aberto para receber propostas, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica', edital_id: 1},
-    {id: 0, origem: 'Pregoeiro', dataHora: '31/05/2023 11:39:41', conteudo: 'O pregão está aberto para receber propostas, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK,', edital_id: 1},
-    {id: 0, origem: 'Pregoeiro', dataHora: '31/05/2023 11:39:41', conteudo: 'O pregão está aberto para receber propostas, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica,', edital_id: 1},
-    {id: 0, origem: 'Pregoeiro', dataHora: '31/05/2023 11:39:41', conteudo: 'O pregão está aberto para receber propostas, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK,', edital_id: 1},
-    {id: 0, origem: 'Pregoeiro', dataHora: '31/05/2023 11:39:41', conteudo: 'O pregão está aberto para receber propostas, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica,', edital_id: 1},
-    {id: 0, origem: 'Pregoeiro', dataHora: '31/05/2023 11:39:41', conteudo: 'O pregão está aberto para receber propostas, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK,', edital_id: 1},
-    {id: 0, origem: 'Pregoeiro', dataHora: '31/05/2023 11:39:41', conteudo: 'O pregão está aberto para receber propostas, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, o licitante 1 retornou OK, Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica Microtecnica,', edital_id: 1}
-  ];
+  listMensagensPregao: Mensagem[] = [];
+
+  idEdital: number = 0
+
+  constructor(private chatService: ChatService ,private dataService: DataService, private websocketchatconnectService: WebsocketchatconnectService, private httpClient: HttpClient){}
 
   ngOnInit(): void{
 
+    this.idEdital = this.dataService.getIdEdital();
+
+    this.findAllMessagesByIdEdital(this.idEdital);
+
   }
+
+  findAllMessagesByIdEdital(idEditalMessages: number){
+
+    this.chatService.getAllMessagesByEditalId(idEditalMessages).subscribe(
+      (messagesResponse) => {this.listMensagensPregao = messagesResponse}
+    );
+
+  }
+
+  
 
 }

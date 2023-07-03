@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { palavraChave } from 'src/app/interfaces/PalavraChave';
 import { Cor } from 'src/app/interfaces/Cor';
 import { MensagemAlertaService } from 'src/app/services/MensagemAlerta.service';
+import { CorService } from 'src/app/services/cor.service';
 
 @Component({
   selector: 'app-alerta-mensagens',
@@ -14,29 +15,40 @@ export class AlertaMensagensComponent {
 
   palavraChaveList: palavraChave[] = [];
 
-  corId: number = 0; 
+  coresList: Cor[] = [];
 
-  constructor(private mensagemAlertaService: MensagemAlertaService){}
+  corId: Cor = {"id":0,"nome":"","hexadecimalCode":""}; 
 
-  coresList: Cor[] = [
-    {id: 1, nome: "Empresa", hexadecimalCode: "#FF0000"},
-    {id: 2, nome: "Financeiro", hexadecimalCode: "#FFD700"},
-    {id: 3, nome: "Verde", hexadecimalCode: "#3CB371"},
-    {id: 4, nome: "Azul", hexadecimalCode: "#4169E1"}
-  ];
+  constructor(private mensagemAlertaService: MensagemAlertaService, private corService: CorService){}
 
   ngOnInit(): void{
+
+    this.getAllcolors();
+    
+    this.getAllPalavrasChave();
+
+  }
+
+  getAllPalavrasChave(): void{
+
     this.mensagemAlertaService.getPalavrasChave().subscribe(
       (palavra) => (this.palavraChaveList = palavra)
     ); 
+
   }
 
-  corListFind = this.coresList[this.corId];
+  getAllcolors(): void{
+
+    this.corService.findAllColorGroups().subscribe(
+      (colorsGroups) => {this.coresList = colorsGroups}
+    );
+
+  }
 
   addBtnClick(): void{
     
-    let palavraAux = {id:0 ,palavra: this.palavraChaveTxt, beepName: "bells", colorGroup: this.coresList[this.corId-1]};
-    
+    let palavraAux = {id:0 ,palavra: this.palavraChaveTxt, beepName: "bells", colorGroup: this.corId};
+
     this.mensagemAlertaService.savePalavraChave(palavraAux).subscribe();
 
     this.palavraChaveList.push(palavraAux);

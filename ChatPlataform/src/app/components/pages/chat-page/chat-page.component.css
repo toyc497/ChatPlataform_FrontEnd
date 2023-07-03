@@ -45,6 +45,6 @@ tr:nth-child(even) {
     }
 
 tr:hover:nth-child(1n + 2) {
-    background-color: var(--btnHoverColor);
+    background-color: #4F4F4F;
     color: var(--fontColor);
 }

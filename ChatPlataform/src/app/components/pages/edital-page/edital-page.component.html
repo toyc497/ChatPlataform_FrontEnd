@@ -2,19 +2,19 @@
     <div class="tabelaContainer">
         <table>
             <tr>
-                <th>Id</th>
-                <th>Chave do Edital</th>
+                <th>Órgão/Unidade Compradora</th>
+                <th>Edital/Aviso</th>
                 <th>Número do Pregão</th>
-                <th>Lote</th>
+                <th>Lote/Item</th>
             </tr>
-            <!--
-            <tr *ngFor="let pregao of editaisSistema">
-                <td>{{pregao}}</td>
-                <td>{{pregao}}</td>
-                <a routerLink="/chat"><td>{{pregao}}</td></a>
-                <td>{{pregao}}</td>
+            
+            <tr *ngFor="let pregao of editaisSistema" (click)="pregaoClicked(pregao)">
+                <td>{{pregao.orgao}}</td>
+                <td>{{pregao.chaveEdital}}</td>
+                <td>{{pregao.numeroPregao}}</td>
+                <td>{{pregao.lote}}</td>
             </tr>
-            -->
+            
         </table>
     </div>
 </div>

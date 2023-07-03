@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Sistemas } from "../interfaces/Sistemas";
+import { Pregao } from "../interfaces/Pregao";
 
 @Injectable({
     providedIn: 'root'
@@ -8,6 +9,8 @@ import { Sistemas } from "../interfaces/Sistemas";
 export class DataService{
 
     private sistema!: Sistemas;
+
+    private edital!: Pregao
 
     constructor(){}
 
@@ -21,6 +24,18 @@ export class DataService{
 
     getIdSistema(){
         return this.sistema.id;
+    }
+
+    setEdital(pregao: Pregao){
+        this.edital = pregao;
+    }
+
+    getEdital(){
+        return this.edital;
+    }
+
+    getIdEdital(){
+        return this.edital.id;
     }
 
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Credencial } from 'src/app/interfaces/Credencial';
-import { Sistemas } from 'src/app/interfaces/Sistemas';
 import { CredencialService } from 'src/app/services/CredencialService';
 import { DataService } from 'src/app/services/DataService';
 
@@ -11,29 +10,43 @@ import { DataService } from 'src/app/services/DataService';
 })
 export class ContaUsuarioComponent {
 
-  credencialAtual: Credencial[] = [];
+  usuarioSistema = "";
 
-  testeReturn: string = '';
+  senhaSistema = "";
 
-  sistemaAtual!: number;
+  credencialAtual: Credencial = {id: 0, usuario: this.usuarioSistema, senha: this.senhaSistema, sistema: {id: 0, nome: "sistema"}};
+
+  idSistema: number = 0;
   
 
   constructor(private credencialService: CredencialService, private dataService: DataService){}
 
   ngOnInit(): void{
 
-    this.sistemaAtual = this.dataService.getIdSistema();
-    console.log("SISTEMA ATUAL: "+this.sistemaAtual);
+    this.idSistema = this.dataService.getIdSistema();
 
-    this.credencialService.findCrendencialByIdSistema(this.sistemaAtual).subscribe(
-      //(credencialDB) => console.log(credencialDB)
-      (credencialBD) => (this.testeReturn = credencialBD)
-      //(credencialBD) => (this.testeReturn = credencialBD)
+    this.getCredenciaisSistema();
+
+  }
+
+  getCredenciaisSistema(): void{
+
+    this.credencialService.findCrendencialByIdSistema(this.idSistema).subscribe(
+
+      (credencialBD) => (this.credencialAtual = credencialBD)
+
     );
 
-    
+  }
 
-    console.log("CREDENCIAL ATUAL: "+this.testeReturn);
+  putCredendiaisSistema(): void{
+
+    this.credencialAtual.usuario = this.usuarioSistema;
+    this.credencialAtual.senha = this.senhaSistema;
+    
+    this.credencialService.updateCredencialSistema(this.credencialAtual).subscribe(
+      (updateResponse) => {alert('Credenciais Atualizadas: '+updateResponse.usuario+" | "+updateResponse.senha)}
+    );
 
   }
 

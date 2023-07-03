@@ -14,13 +14,20 @@ export class CredencialService{
 
     constructor(private HttpClient:HttpClient){}
 
-    findCrendencialByIdSistema(idSistema: number): Observable<string>{
+    findCrendencialByIdSistema(idSistema: number): Observable<Credencial>{
 
         let urlFindByIdSistema = this.url+"/getbyidsistema"+"/"+idSistema;
 
-        console.log("URL: "+urlFindByIdSistema);
+        return this.HttpClient.get<Credencial>(urlFindByIdSistema);
 
-        return this.HttpClient.get<string>(urlFindByIdSistema);
+    }
+
+    updateCredencialSistema(credencial: Credencial): Observable<Credencial>{
+
+        const credencialToUpdate = {id: credencial.id, usuario: credencial.usuario, senha: credencial.senha};
+        const headers = new HttpHeaders({'Content-Type': 'application/json'});
+        let urlUpdate = this.url+"/update";
+        return this.HttpClient.put<Credencial>(urlUpdate,credencialToUpdate,{headers});
 
     }
 

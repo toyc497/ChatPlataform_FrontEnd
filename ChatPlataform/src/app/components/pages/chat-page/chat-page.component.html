@@ -6,11 +6,13 @@
                 <th>Data</th>
                 <th>Mensagem</th>
             </tr>
-            <tr *ngFor="let mensagem of listMensagens">
+            
+            <tr *ngFor="let mensagem of listMensagensPregao">
                 <td>{{mensagem.origem}}</td>
                 <td>{{mensagem.dataHora}}</td>
                 <td>{{mensagem.conteudo}}</td>
             </tr>
+            
         </table>
     </div>
 </div>

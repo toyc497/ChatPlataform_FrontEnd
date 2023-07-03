@@ -9,7 +9,7 @@
                 <li>
                     <label for="colors">Cor/Grupo: </label>
                     <select name="colors" id="colors" [(ngModel)]="corId">
-                        <option *ngFor="let cor of coresList" value="{{cor.id}}">{{cor.nome}}</option>
+                        <option *ngFor="let cor of coresList" [ngValue]="cor">{{cor.nome}}</option>
                     </select>
                 </li>
                 <li>

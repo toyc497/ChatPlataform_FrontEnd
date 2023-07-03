@@ -34,14 +34,14 @@ export class SistemasPageComponent {
   pregoesSystem(sistema: Sistemas): void{
 
     this.dataService.setSistema(sistema);
-    this.router.navigateByUrl('/edital');
+    this.router.navigateByUrl('/pregao');
 
   }
 
   credenciaisSystem(sistema: Sistemas): void{
 
     this.dataService.setSistema(sistema);
-    this.router.navigateByUrl('/contaUsuario');
+    this.router.navigateByUrl('/credenciais');
 
   }
 

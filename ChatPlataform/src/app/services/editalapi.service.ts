@@ -14,12 +14,11 @@ export class EditalapiService {
 
   constructor(private HttpClient:HttpClient) { }
 
-  getAllEditaisBySistemaId(id: number): Observable<any>{
+  getAllEditaisBySistemaId(id: number): Observable<Pregao[]>{
 
     const urlFinAllEditais = this.url+"/editais/"+id;
-    console.log("URL: "+urlFinAllEditais);
 
-    return this.HttpClient.get(urlFinAllEditais);
+    return this.HttpClient.get<Pregao[]>(urlFinAllEditais);
 
   }
 

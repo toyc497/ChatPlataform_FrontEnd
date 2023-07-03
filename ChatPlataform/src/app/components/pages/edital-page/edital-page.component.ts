@@ -11,11 +11,15 @@ import { EditalapiService } from 'src/app/services/editalapi.service';
 })
 export class EditalPageComponent {
 
-  editaisSistema: any;
+  editaisSistema: Pregao[] = [];
+
+  idSistema: number = 0;
 
   constructor(private editalapi: EditalapiService, private dataService: DataService, private router: Router){}
 
   ngOnInit(): void{
+
+    this.idSistema = this.dataService.getIdSistema();
 
     this.getAllEditaisSistem();
 
@@ -23,25 +27,19 @@ export class EditalPageComponent {
 
   getAllEditaisSistem(): void{
 
-    let idSistema: number = this.dataService.getIdSistema(); 
+    this.editalapi.getAllEditaisBySistemaId(this.idSistema).subscribe(
 
-    this.editalapi.getAllEditaisBySistemaId(idSistema).subscribe(
-
-      (findEditaisResponse) => {this.editaisSistema = findEditaisResponse, console.log(this.editaisSistema)}
+      (findEditaisResponse) => {this.editaisSistema = findEditaisResponse}
 
     );
 
-    //console.log(this.editaisSistema);
-
   }
 
-  /*
-  listPregoes: Pregao[] = [
-    {id: 1, chaveEdital: 3599, numeroPregao: 35745678984, lote: 1, sistema:1},
-    {id: 1, chaveEdital: 35995, numeroPregao: 35745678984, lote: 1, sistema:1},
-    {id: 1, chaveEdital: 35995, numeroPregao: 35745678984, lote: 1, sistema:1},
-    {id: 1, chaveEdital: 35995, numeroPregao: 35745678984, lote: 1, sistema:1}
-  ];
-  */
+  pregaoClicked(pregao: Pregao): void{
+
+    this.dataService.setEdital(pregao);
+    this.router.navigateByUrl('/chat');
+
+  }
 
 }
