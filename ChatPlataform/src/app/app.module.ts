@@ -13,7 +13,6 @@ import { ContaUsuarioComponent } from './components/pages/conta-usuario/conta-us
 import { EditalPageComponent } from './components/pages/edital-page/edital-page.component';
 import { ChatPageComponent } from './components/pages/chat-page/chat-page.component';
 import { PageNotFoundComponent } from './components/pages/page-not-found/page-not-found.component';
-import { WebsocketchatconnectService } from './services/websocketchatconnect.service';
 
 @NgModule({
   declarations: [
@@ -27,13 +26,13 @@ import { WebsocketchatconnectService } from './services/websocketchatconnect.ser
     ChatPageComponent,
     PageNotFoundComponent
   ],
-  imports: [
+  imports: [  
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [WebsocketchatconnectService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

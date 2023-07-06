@@ -11,13 +11,13 @@ export class ChatService {
 
   private url = environment.baseApiUrl+"/edital/mensagens/";
 
-  constructor(private HttpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient) { }
 
   getAllMessagesByEditalId(id: number): Observable<Mensagem[]>{
 
     const urlFindAllMessages = this.url+id;
 
-    return this.HttpClient.get<Mensagem[]>(urlFindAllMessages);
+    return this.httpClient.get<Mensagem[]>(urlFindAllMessages);
 
   }
 

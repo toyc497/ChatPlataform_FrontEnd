@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -9,13 +10,15 @@ import * as Stomp from 'stompjs';
 
 export class WebsocketchatconnectService {
 
-  socket = new SockJS('http://127.0.0.1:8085/connectiongate');
+  socket = new SockJS(environment.websocketUrl);
   stompClient = Stomp.over(this.socket);
 
   subscribe(topic: string, callback: any): void{
 
     const connected: boolean = this.stompClient.connected;
     
+    console.log("WEBSOCKET TRY CONNECTION");
+
     if(connected){
       this.subscribeToTopic(topic, callback);
       return;

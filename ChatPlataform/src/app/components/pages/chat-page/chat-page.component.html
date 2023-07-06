@@ -1,18 +1,19 @@
 <div class="container">
     <div class="tabelaContainer">
-        <table>
-            <tr>
-                <th>Origem</th>
-                <th>Data</th>
-                <th>Mensagem</th>
-            </tr>
+        <div class="tbTitulosContainer">
+            <div class="tbOrigem tbColumn1 genTitleStyle">
+                <h2>Origem</h2>
+            </div>
+            <div class="tbDataHora tbColumn2 genTitleStyle">
+                <h2>Data</h2>
+            </div>
+            <div class="tbConteudo tbColumn3 genTitleStyle">
+                <h2>Mensagem</h2>
+            </div>
+        </div>
+        <div class="tbRowsContainer" id="tableRowsContainer">
             
-            <tr *ngFor="let mensagem of listMensagensPregao">
-                <td>{{mensagem.origem}}</td>
-                <td>{{mensagem.dataHora}}</td>
-                <td>{{mensagem.conteudo}}</td>
-            </tr>
-            
-        </table>
+        </div>
+        <button (click)="showMessages()">click</button>
     </div>
 </div>
