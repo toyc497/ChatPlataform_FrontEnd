@@ -9,47 +9,42 @@
 .container .tabelaContainer{
     width: 90%;
     height: 100%;
-    padding-top: 20px;
 }
 
-.container .tabelaContainer .tbTitulosContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
+table{
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 30px;
 }
 
-.tbColumn1{
-    width: 15%;
-    background-color: red;
+table, th td{
+    border: 1px var(--btnColor);
 }
 
-.tbColumn2{
-    width: 20%;
-}
-
-.tbColumn3{
-    width: 65%;
-    background-color: yellow;
-}
-
-.genTitleStyle{
+th, td{
     padding: 10px;
-    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    width: auto;
+}
+
+th{
+    text-align: justify;
     color: var(--fontColor);
-    font-size: 0.8rem;
     background-color: var(--btnColor);
+    font-weight: bold;
 }
 
-.container .tabelaContainer .tbRowsContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: blueviolet;
+td{
+    font-size: 0.9rem;
+    text-align: justify;
+    color: var(--fontColor);
 }
 
-.divCreatedRowsData{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    background-color:chocolate;
+tr:nth-child(even) {
+    background-color: var(--backgroundHoverColor);
+    }
+
+tr:hover:nth-child(1n + 2) {
+    background-color: #4F4F4F;
+    color: var(--fontColor);
 }

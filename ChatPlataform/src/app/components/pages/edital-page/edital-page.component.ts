@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pregao } from 'src/app/interfaces/Pregao';
 import { DataService } from 'src/app/services/DataService';
-import { ChatmessagesdataService } from 'src/app/services/chatmessagesdata.service';
 import { EditalapiService } from 'src/app/services/editalapi.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class EditalPageComponent {
 
   idSistema: number = 0;
 
-  constructor(private editalapi: EditalapiService, private dataService: DataService, private chatmessagesdataService: ChatmessagesdataService, private router: Router){}
+  constructor(private editalapi: EditalapiService, private dataService: DataService, private router: Router){}
 
   ngOnInit(): void{
 
@@ -39,7 +38,6 @@ export class EditalPageComponent {
   pregaoClicked(pregao: Pregao): void{
 
     this.dataService.setEdital(pregao);
-    this.chatmessagesdataService.setListaMensagens();
     this.router.navigateByUrl('/chat');
 
   }

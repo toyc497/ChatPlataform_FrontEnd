@@ -3,6 +3,7 @@ import { Mensagem } from 'src/app/interfaces/Mensagem';
 import { palavraChave } from 'src/app/interfaces/PalavraChave';
 import { DataService } from 'src/app/services/DataService';
 import { MensagemAlertaService } from 'src/app/services/MensagemAlerta.service';
+import { BotrequestmessageService } from 'src/app/services/botrequestmessage.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { ChatmessagesdataService } from 'src/app/services/chatmessagesdata.service';
 
@@ -13,23 +14,17 @@ import { ChatmessagesdataService } from 'src/app/services/chatmessagesdata.servi
 })
 export class ChatPageComponent implements OnInit{
 
-  //[{id: 1, origem: '', dataHora: '', conteudo: 'Microtecnica',edital:{id: 0, chaveEdital: '', numeroPregao: 0, orgao: '', lote: 0,sistema: {"id":0,"nome":""}}},{id: 2, origem: '', dataHora: '', conteudo: 'Vertical',edital:{id: 0, chaveEdital: '', numeroPregao: 0, orgao: '', lote: 0,sistema: {"id":0,"nome":""}}}];
+  mensagensDataChat: any;
 
   palavraChaveList: palavraChave[] = [];
 
-  mensagemChatAtual: string = "";
-
-  //idEdital: number = 0;
-
-  constructor(private mensagemAlertaService:MensagemAlertaService ,private chatService: ChatService ,private dataService: DataService, private chatmessagesdataService: ChatmessagesdataService){}
+  constructor(private mensagemAlertaService:MensagemAlertaService ,private chatService: ChatService ,private dataService: DataService, private chatmessagesdataService: ChatmessagesdataService, private botrequestmessageService: BotrequestmessageService){}
 
   ngOnInit(): void{
 
-    //this.idEdital = this.dataService.getIdEdital();
-
-    //this.generateTableOfChat();
-
-    this.showMessages();
+    this.botrequestmessageService.getRequestBot(this.dataService.getIdEdital()).subscribe(
+      resultado => {this.mensagensDataChat = resultado}
+    );
 
   }
 
