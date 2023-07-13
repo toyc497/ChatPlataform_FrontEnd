@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Mensagem } from 'src/app/interfaces/Mensagem';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { palavraChave } from 'src/app/interfaces/PalavraChave';
 import { DataService } from 'src/app/services/DataService';
 import { MensagemAlertaService } from 'src/app/services/MensagemAlerta.service';
 import { BotrequestmessageService } from 'src/app/services/botrequestmessage.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { ChatmessagesdataService } from 'src/app/services/chatmessagesdata.service';
+import { WebsocketconnectionService } from 'src/app/services/websocketconnection.service';
 
 @Component({
   selector: 'app-chat-page',
   templateUrl: './chat-page.component.html',
-  styleUrls: ['./chat-page.component.css']
+  styleUrls: ['./chat-page.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatPageComponent implements OnInit{
 
@@ -18,14 +20,12 @@ export class ChatPageComponent implements OnInit{
 
   palavraChaveList: palavraChave[] = [];
 
-  constructor(private mensagemAlertaService:MensagemAlertaService ,private chatService: ChatService ,private dataService: DataService, private chatmessagesdataService: ChatmessagesdataService, private botrequestmessageService: BotrequestmessageService){}
+  constructor(private websocketconnectionService: WebsocketconnectionService ,private mensagemAlertaService:MensagemAlertaService ,private chatService: ChatService ,private dataService: DataService, private chatmessagesdataService: ChatmessagesdataService, private botrequestmessageService: BotrequestmessageService){}
+  
+  ngOnInit(): void {
 
-  ngOnInit(): void{
-
-    this.botrequestmessageService.getRequestBot(this.dataService.getIdEdital()).subscribe(
-      resultado => {this.mensagensDataChat = resultado}
-    );
-
+    this.websocketconnectionService.connect();
+    
   }
 
   /*
@@ -69,11 +69,5 @@ export class ChatPageComponent implements OnInit{
     
   }
   */
-
-  showMessages(): void{
-
-    console.log(this.chatmessagesdataService.getListaMensagens());
-
-  }
 
 }
